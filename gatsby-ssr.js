@@ -17,7 +17,8 @@ exports.onRenderBody = function (_ref, pluginOptions) {
       delayLoad = pluginOptions.delayLoad,
       delayLoadTime = pluginOptions.delayLoadTime,
       manualLoad = pluginOptions.manualLoad,
-      loadType = pluginOptions.loadType;
+      loadType = pluginOptions.loadType,
+      srcUrl = pluginOptions.srcUrl;
 
   if (!prodKey || prodKey.length < 10) console.error("Your Rudderstack prodKey must be at least 10 char in length.");
 
@@ -47,17 +48,17 @@ exports.onRenderBody = function (_ref, pluginOptions) {
     if (loadType == 'async') {
       tag = _react2.default.createElement("script", { async: true,
         key: "rudderstack-cdn",
-        src: "https://cdn.rudderlabs.com/v1/rudder-analytics.min.js"
+        src: srcUrl || 'https://cdn.rudderlabs.com/v1/rudder-analytics.min.js'
       });
     } else if (loadType == 'defer') {
       tag = _react2.default.createElement("script", { defer: true,
         key: "rudderstack-cdn",
-        src: "https://cdn.rudderlabs.com/v1/rudder-analytics.min.js"
+        src: srcUrl || 'https://cdn.rudderlabs.com/v1/rudder-analytics.min.js'
       });
     } else {
       tag = _react2.default.createElement("script", {
         key: "rudderstack-cdn",
-        src: "https://cdn.rudderlabs.com/v1/rudder-analytics.min.js"
+        src: srcUrl || 'https://cdn.rudderlabs.com/v1/rudder-analytics.min.js'
       });
     }
 
